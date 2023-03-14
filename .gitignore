@@ -1,0 +1,8 @@
+*.o
+*.mod
+
+bin/*
+include/*
+obj/*
+
+make.inc

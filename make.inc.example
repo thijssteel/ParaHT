@@ -1,0 +1,22 @@
+# Project directory
+INSTALLDIR := .
+
+# fortran compiler and flags
+FC := gfortran
+# FFLAGS := -O0 -ggdb3 -Wall -fcheck=bounds -ffpe-trap=invalid -fimplicit-none
+FFLAGS := -g -O3 -march=native -fopenmp -fPIC
+
+# before building, run this to set the link path export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/mkl/lib/intel64
+# libraries required by compiler (LAPACK AND BLAS)
+
+# single threaded blas
+# LIBS := -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_gf_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl
+
+# multi threaded blas
+ LIBS :=  -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl
+
+# Dependent directories
+SRCDIR := $(INSTALLDIR)/src
+OBJDIR := $(INSTALLDIR)/obj
+INCDIR := $(INSTALLDIR)/include
+BINDIR := $(INSTALLDIR)/bin
